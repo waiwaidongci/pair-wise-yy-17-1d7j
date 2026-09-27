@@ -284,6 +284,85 @@ main {
   padding: 9px;
 }
 
+.hint {
+  color: var(--warn);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.judgment {
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fbf8f1;
+  display: grid;
+  gap: 10px;
+}
+
+.judgment-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.judgment-head .meta {
+  font-size: 12px;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.metric {
+  border-radius: 6px;
+  padding: 9px;
+  border: 1px solid var(--line);
+  background: #fff;
+  display: grid;
+  gap: 4px;
+}
+
+.metric.ok {
+  border-color: rgba(38, 115, 77, .35);
+  background: rgba(38, 115, 77, .05);
+}
+
+.metric.bad {
+  border-color: rgba(161, 61, 61, .45);
+  background: rgba(161, 61, 61, .06);
+}
+
+.metric-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.metric-range {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.review {
+  border-top: 1px dashed var(--line);
+  padding-top: 8px;
+  font-size: 13px;
+  color: var(--ok);
+}
+
 .history {
   margin-top: 10px;
   border-top: 1px dashed var(--line);
@@ -352,6 +431,7 @@ main {
   .stats,
   .form-grid,
   .detail,
+  .metric-grid,
   .toolbar {
     grid-template-columns: 1fr;
   }

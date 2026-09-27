@@ -8,36 +8,285 @@
       "route": "西线巡测",
       "sensitivity": "高",
       "protectedStatus": "重点保护",
-      "baselineTemp": 16.2,
-      "baselineHumidity": 92,
-      "baselineCo2": 680,
-      "note": "游客步道上方，滴水频率稳定",
-      "createdAt": "2026-06-14T08:00:00.000Z",
-      "updatedAt": "2026-06-14T08:00:00.000Z",
+      "note": "游客步道上方，滴水频率稳定；基准按换季版本管理",
+      "createdAt": "2026-03-01T08:00:00.000Z",
+      "updatedAt": "2026-06-15T01:30:00.000Z",
       "history": [
-        { "at": "2026-06-14T08:00:00.000Z", "action": "创建", "note": "样点建档" }
+        {
+          "at": "2026-06-15T01:30:00.000Z",
+          "action": "基准修订",
+          "note": "关联基准版本由基准台账维护，样点档案不再保存基准值"
+        },
+        {
+          "at": "2026-03-01T08:00:00.000Z",
+          "action": "创建",
+          "note": "样点建档"
+        }
+      ]
+    }
+  ],
+  "baselines": [
+    {
+      "id": "baseline-seed-1",
+      "siteId": "site-seed-1",
+      "versionNo": 1,
+      "effectiveAt": "2026-03-01T08:00:00.000Z",
+      "temp": 16.2,
+      "tempTolerance": 1.5,
+      "humidity": 92,
+      "humidityTolerance": 6,
+      "co2": 680,
+      "co2Tolerance": 220,
+      "note": "冬春巡测基准（范围较宽）",
+      "createdAt": "2026-03-01T08:00:00.000Z",
+      "updatedAt": "2026-03-01T08:00:00.000Z",
+      "history": [
+        {
+          "at": "2026-03-01T08:00:00.000Z",
+          "action": "登记",
+          "note": "冬春版本登记"
+        }
+      ]
+    },
+    {
+      "id": "baseline-seed-2",
+      "siteId": "site-seed-1",
+      "versionNo": 2,
+      "effectiveAt": "2026-06-15T00:00:00.000Z",
+      "temp": 17,
+      "tempTolerance": 1.5,
+      "humidity": 91,
+      "humidityTolerance": 5,
+      "co2": 620,
+      "co2Tolerance": 80,
+      "note": "入夏换季，CO2 限值收紧至 620±80（曾误填 ±180，已于 6/20 修订）",
+      "createdAt": "2026-06-15T01:30:00.000Z",
+      "updatedAt": "2026-06-20T01:10:00.000Z",
+      "history": [
+        {
+          "at": "2026-06-20T01:10:00.000Z",
+          "action": "基准修订",
+          "note": "修订生效时刻或基准值，受影响巡测按新版本重算（CO2 波动 180→80）"
+        },
+        {
+          "at": "2026-06-15T01:30:00.000Z",
+          "action": "登记",
+          "note": "新版本登记，立即按新版本重算受影响巡测"
+        }
       ]
     }
   ],
   "surveys": [
     {
+      "id": "survey-seed-3",
+      "siteId": "site-seed-1",
+      "surveyor": "沈宁",
+      "date": "2026-06-19",
+      "temperature": 17.2,
+      "humidity": 90,
+      "co2": 730,
+      "dripRate": 10,
+      "photoUrl": "",
+      "disturbance": "",
+      "reviewNote": "现场复核设备正常，按当时基准在范围内",
+      "reviewedBy": "沈宁",
+      "reviewedAt": "2026-06-19T08:20:00.000Z",
+      "createdAt": "2026-06-19T02:40:00.000Z",
+      "updatedAt": "2026-06-20T01:10:00.000Z",
+      "history": [
+        {
+          "at": "2026-06-20T01:10:00.000Z",
+          "action": "基准修订重算",
+          "note": "按基准v2（2026-06-15 08:00 生效）重算：CO2超限，转待复查；原人工复查结论不再覆盖系统判定"
+        },
+        {
+          "at": "2026-06-19T08:20:00.000Z",
+          "action": "完成复查",
+          "note": "现场复核设备正常，按当时基准在范围内"
+        },
+        {
+          "at": "2026-06-19T02:40:00.000Z",
+          "action": "创建",
+          "note": "按当天v2（初版CO2±180）判定：三项均在范围，判定正常"
+        }
+      ],
+      "judgment": {
+        "missing": false,
+        "baselineId": "baseline-seed-2",
+        "label": "v2",
+        "versionNo": 2,
+        "effectiveAt": "2026-06-15T00:00:00.000Z",
+        "items": {
+          "temperature": {
+            "label": "温度",
+            "unit": "℃",
+            "value": 17.2,
+            "baseline": 17,
+            "tolerance": 1.5,
+            "min": 15.5,
+            "max": 18.5,
+            "inRange": true
+          },
+          "humidity": {
+            "label": "湿度",
+            "unit": "%RH",
+            "value": 90,
+            "baseline": 91,
+            "tolerance": 5,
+            "min": 86,
+            "max": 96,
+            "inRange": true
+          },
+          "co2": {
+            "label": "CO2",
+            "unit": "ppm",
+            "value": 730,
+            "baseline": 620,
+            "tolerance": 80,
+            "min": 540,
+            "max": 700,
+            "inRange": false
+          }
+        },
+        "allInRange": false,
+        "sig": "{\"effectiveAt\":\"2026-06-15T00:00:00.000Z\",\"temp\":17,\"tempTolerance\":1.5,\"humidity\":91,\"humidityTolerance\":5,\"co2\":620,\"co2Tolerance\":80}",
+        "judgedAt": "2026-06-20T01:10:00.000Z"
+      },
+      "status": "异常待复查"
+    },
+    {
+      "id": "survey-seed-2",
+      "siteId": "site-seed-1",
+      "surveyor": "阿岚",
+      "date": "2026-06-18",
+      "temperature": 17.3,
+      "humidity": 89,
+      "co2": 760,
+      "dripRate": 11,
+      "photoUrl": "",
+      "disturbance": "无明显干扰",
+      "reviewNote": "",
+      "reviewedBy": "",
+      "reviewedAt": "",
+      "createdAt": "2026-06-18T03:00:00.000Z",
+      "updatedAt": "2026-06-18T03:00:00.000Z",
+      "history": [
+        {
+          "at": "2026-06-18T03:00:00.000Z",
+          "action": "创建",
+          "note": "按当天v2判定：CO2超限，转待复查"
+        }
+      ],
+      "judgment": {
+        "missing": false,
+        "baselineId": "baseline-seed-2",
+        "label": "v2",
+        "versionNo": 2,
+        "effectiveAt": "2026-06-15T00:00:00.000Z",
+        "items": {
+          "temperature": {
+            "label": "温度",
+            "unit": "℃",
+            "value": 17.3,
+            "baseline": 17,
+            "tolerance": 1.5,
+            "min": 15.5,
+            "max": 18.5,
+            "inRange": true
+          },
+          "humidity": {
+            "label": "湿度",
+            "unit": "%RH",
+            "value": 89,
+            "baseline": 91,
+            "tolerance": 5,
+            "min": 86,
+            "max": 96,
+            "inRange": true
+          },
+          "co2": {
+            "label": "CO2",
+            "unit": "ppm",
+            "value": 760,
+            "baseline": 620,
+            "tolerance": 80,
+            "min": 540,
+            "max": 700,
+            "inRange": false
+          }
+        },
+        "allInRange": false,
+        "sig": "{\"effectiveAt\":\"2026-06-15T00:00:00.000Z\",\"temp\":17,\"tempTolerance\":1.5,\"humidity\":91,\"humidityTolerance\":5,\"co2\":620,\"co2Tolerance\":80}",
+        "judgedAt": "2026-06-18T03:00:00.000Z"
+      },
+      "status": "异常待复查"
+    },
+    {
       "id": "survey-seed-1",
       "siteId": "site-seed-1",
       "surveyor": "沈宁",
-      "date": "2026-06-18",
+      "date": "2026-06-10",
       "temperature": 17.4,
       "humidity": 88,
-      "co2": 920,
+      "co2": 870,
       "dripRate": 12,
-      "disturbance": "栏杆外侧有触碰痕迹",
       "photoUrl": "",
-      "status": "异常待复查",
+      "disturbance": "栏杆外侧有触碰痕迹",
       "reviewNote": "",
-      "createdAt": "2026-06-18T10:00:00.000Z",
-      "updatedAt": "2026-06-18T10:00:00.000Z",
+      "reviewedBy": "",
+      "reviewedAt": "",
+      "createdAt": "2026-06-10T02:10:00.000Z",
+      "updatedAt": "2026-06-10T02:10:00.000Z",
       "history": [
-        { "at": "2026-06-18T10:00:00.000Z", "action": "创建", "note": "CO2升高并有干扰痕迹" }
-      ]
+        {
+          "at": "2026-06-10T02:10:00.000Z",
+          "action": "创建",
+          "note": "按当天v1判定：三项均在范围，判定正常"
+        }
+      ],
+      "judgment": {
+        "missing": false,
+        "baselineId": "baseline-seed-1",
+        "label": "v1",
+        "versionNo": 1,
+        "effectiveAt": "2026-03-01T08:00:00.000Z",
+        "items": {
+          "temperature": {
+            "label": "温度",
+            "unit": "℃",
+            "value": 17.4,
+            "baseline": 16.2,
+            "tolerance": 1.5,
+            "min": 14.7,
+            "max": 17.7,
+            "inRange": true
+          },
+          "humidity": {
+            "label": "湿度",
+            "unit": "%RH",
+            "value": 88,
+            "baseline": 92,
+            "tolerance": 6,
+            "min": 86,
+            "max": 98,
+            "inRange": true
+          },
+          "co2": {
+            "label": "CO2",
+            "unit": "ppm",
+            "value": 870,
+            "baseline": 680,
+            "tolerance": 220,
+            "min": 460,
+            "max": 900,
+            "inRange": true
+          }
+        },
+        "allInRange": true,
+        "sig": "{\"effectiveAt\":\"2026-03-01T08:00:00.000Z\",\"temp\":16.2,\"tempTolerance\":1.5,\"humidity\":92,\"humidityTolerance\":6,\"co2\":680,\"co2Tolerance\":220}",
+        "judgedAt": "2026-06-10T02:10:00.000Z"
+      },
+      "status": "正常"
     }
   ]
 }
