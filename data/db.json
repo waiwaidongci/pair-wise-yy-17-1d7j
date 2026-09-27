@@ -8,14 +8,45 @@
       "route": "西线巡测",
       "sensitivity": "高",
       "protectedStatus": "重点保护",
-      "baselineTemp": 16.2,
-      "baselineHumidity": 92,
-      "baselineCo2": 680,
       "note": "游客步道上方，滴水频率稳定",
       "createdAt": "2026-06-14T08:00:00.000Z",
       "updatedAt": "2026-06-14T08:00:00.000Z",
       "history": [
         { "at": "2026-06-14T08:00:00.000Z", "action": "创建", "note": "样点建档" }
+      ]
+    }
+  ],
+  "baselines": [
+    {
+      "id": "bl-seed-1",
+      "siteId": "site-seed-1",
+      "effectiveFrom": "2026-06-01T00:00",
+      "items": {
+        "temperature": { "min": 15.2, "max": 17.2 },
+        "humidity": { "min": 87, "max": 97 },
+        "co2": { "min": 400, "max": 800 }
+      },
+      "note": "夏季基准",
+      "createdAt": "2026-06-01T00:00:00.000Z",
+      "updatedAt": "2026-06-01T00:00:00.000Z",
+      "history": [
+        { "at": "2026-06-01T00:00:00.000Z", "action": "创建", "note": "夏季基准" }
+      ]
+    },
+    {
+      "id": "bl-seed-2",
+      "siteId": "site-seed-1",
+      "effectiveFrom": "2026-09-15T00:00",
+      "items": {
+        "temperature": { "min": 14.8, "max": 16.8 },
+        "humidity": { "min": 90, "max": 98 },
+        "co2": { "min": 400, "max": 700 }
+      },
+      "note": "秋季换季收紧",
+      "createdAt": "2026-09-15T02:00:00.000Z",
+      "updatedAt": "2026-09-15T02:00:00.000Z",
+      "history": [
+        { "at": "2026-09-15T02:00:00.000Z", "action": "创建", "note": "秋季换季收紧" }
       ]
     }
   ],
@@ -32,11 +63,88 @@
       "disturbance": "栏杆外侧有触碰痕迹",
       "photoUrl": "",
       "status": "异常待复查",
+      "judgment": {
+        "baselineId": "bl-seed-1",
+        "baselineLabel": "2026-06-01 00:00 生效 · 夏季基准",
+        "result": "超限",
+        "pass": false,
+        "judgedAt": "2026-06-18T10:00:00.000Z",
+        "items": {
+          "temperature": { "value": 17.4, "min": 15.2, "max": 17.2, "pass": false },
+          "humidity": { "value": 88, "min": 87, "max": 97, "pass": true },
+          "co2": { "value": 920, "min": 400, "max": 800, "pass": false }
+        }
+      },
       "reviewNote": "",
+      "reviewedAt": null,
       "createdAt": "2026-06-18T10:00:00.000Z",
       "updatedAt": "2026-06-18T10:00:00.000Z",
       "history": [
         { "at": "2026-06-18T10:00:00.000Z", "action": "创建", "note": "CO2升高并有干扰痕迹" }
+      ]
+    },
+    {
+      "id": "survey-seed-2",
+      "siteId": "site-seed-1",
+      "surveyor": "沈宁",
+      "date": "2026-09-05",
+      "temperature": 16,
+      "humidity": 93,
+      "co2": 720,
+      "dripRate": 10,
+      "disturbance": "",
+      "photoUrl": "",
+      "status": "正常",
+      "judgment": {
+        "baselineId": "bl-seed-1",
+        "baselineLabel": "2026-06-01 00:00 生效 · 夏季基准",
+        "result": "正常",
+        "pass": true,
+        "judgedAt": "2026-09-27T09:00:00.000Z",
+        "items": {
+          "temperature": { "value": 16, "min": 15.2, "max": 17.2, "pass": true },
+          "humidity": { "value": 93, "min": 87, "max": 97, "pass": true },
+          "co2": { "value": 720, "min": 400, "max": 800, "pass": true }
+        }
+      },
+      "reviewNote": "",
+      "reviewedAt": null,
+      "createdAt": "2026-09-27T09:00:00.000Z",
+      "updatedAt": "2026-09-27T09:00:00.000Z",
+      "history": [
+        { "at": "2026-09-27T09:00:00.000Z", "action": "创建", "note": "补录上旬巡测，按当天生效的夏季基准判定" }
+      ]
+    },
+    {
+      "id": "survey-seed-3",
+      "siteId": "site-seed-1",
+      "surveyor": "赵岚",
+      "date": "2026-09-20",
+      "temperature": 15.8,
+      "humidity": 96,
+      "co2": 660,
+      "dripRate": 9,
+      "disturbance": "",
+      "photoUrl": "",
+      "status": "正常",
+      "judgment": {
+        "baselineId": "bl-seed-2",
+        "baselineLabel": "2026-09-15 00:00 生效 · 秋季换季收紧",
+        "result": "正常",
+        "pass": true,
+        "judgedAt": "2026-09-20T08:30:00.000Z",
+        "items": {
+          "temperature": { "value": 15.8, "min": 14.8, "max": 16.8, "pass": true },
+          "humidity": { "value": 96, "min": 90, "max": 98, "pass": true },
+          "co2": { "value": 660, "min": 400, "max": 700, "pass": true }
+        }
+      },
+      "reviewNote": "",
+      "reviewedAt": null,
+      "createdAt": "2026-09-20T08:30:00.000Z",
+      "updatedAt": "2026-09-20T08:30:00.000Z",
+      "history": [
+        { "at": "2026-09-20T08:30:00.000Z", "action": "创建", "note": "秋季基准生效后首测" }
       ]
     }
   ]
